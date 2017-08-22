@@ -5,7 +5,7 @@ Plugin URI: https://github.com/mmirus/monarch-sharing-shortcode
 Description: Provides a shortcode for adding inline Monarch sharing buttons.
 Author: Matt Mirus
 Author URI: https://github.com/mmirus
-Version: 1.0
+Version: 1.0.1
 GitHub Plugin URI: https://github.com/mmirus/monarch-sharing-shortcode
 */
 
@@ -22,7 +22,7 @@ function monarch_sharing_shortcode($atts) {
   
   return generate_inline_icons('et_social_inline_bottom', $atts['url']);
 }
-add_shortcode('monarch_share', 'monarch_sharing_shortcode');
+add_shortcode('monarch_share', 'MSS\\monarch_sharing_shortcode');
 
 // copied from monarch.php and edited to allow manually specifying URL
 // edits: function arguments; set $monarch to global Monarch instance; replace $this with $monarch; and pass URL to get_icons_list
