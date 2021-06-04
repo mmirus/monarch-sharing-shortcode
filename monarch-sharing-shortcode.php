@@ -23,12 +23,12 @@ function monarch_sharing_shortcode($atts) {
 		'monarch_share'
 	);
   
-  return generate_inline_icons('et_social_inline_bottom', $atts['url'], $atts['center']);
+  return generate_inline_icons($atts['url'], $atts['center']);
 }
 add_shortcode('monarch_share', 'MSS\\monarch_sharing_shortcode');
 
 // copied from monarch.php and edited to allow manually specifying URL
-function generate_inline_icons($class = 'et_social_inline_bottom', $url = '', $center = false) {
+function generate_inline_icons($url = '', $center = false) {
   $monarch = $GLOBALS['et_monarch'];
   $monarch_options = $monarch->monarch_options;
 
@@ -39,8 +39,8 @@ function generate_inline_icons($class = 'et_social_inline_bottom', $url = '', $c
   $display_all_button = isset( $monarch_options[ 'sharing_inline_display_all' ] ) ? $monarch_options[ 'sharing_inline_display_all' ] : false;
 
   $inline_content = sprintf(
-    '<div class="et_social_inline%10$s %12$s %14$s">
-      <div class="et_social_networks et_social_%2$s et_social_%3$s et_social_%4$s et_social_%5$s et_social_no_animation%6$s%7$s%9$s%11$s%13$s">
+    '<div class="et_social_inline%10$s %13$s">
+      <div class="et_social_networks et_social_%2$s et_social_%3$s et_social_%4$s et_social_%5$s et_social_no_animation%6$s%7$s%9$s%11$s%12$s">
         %8$s
         %1$s
       </div>
@@ -67,8 +67,7 @@ function generate_inline_icons($class = 'et_social_inline_bottom', $url = '', $c
     true == $monarch_options[ 'sharing_inline_spacing' ] ? ' et_social_nospace' : '',
     true == $monarch_options[ 'sharing_inline_mobile' ] ? ' et_social_mobile_off' : ' et_social_mobile_on', //#10
     true == $monarch_options[ 'sharing_inline_network_names' ] ? ' et_social_withnetworknames' : '',
-    esc_attr( $class ),
-    esc_attr( sprintf( ' et_social_outer_%1$s', $monarch_options[ 'sharing_inline_outer_color' ] ) ), //#13
+    esc_attr( sprintf( ' et_social_outer_%1$s', $monarch_options[ 'sharing_inline_outer_color' ] ) ), //#12
     true == $center ? 'mss-center' : ''
   );
   if ($center) {
